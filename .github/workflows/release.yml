@@ -1,0 +1,16 @@
+on:
+  push:
+    branches:
+      - master
+
+name: Release
+jobs:
+  ghcr:
+    name: GitHub Container Registry
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo ${{ secrets.CR_PAT }} | docker login ghcr.io -u aaditgupta21 --password-stdin
+      - run: docker build -t ghcr.io/aaditgupta21/counter .
+      - run: docker push ghcr.io/aaditgupta21/counter
+      - run: docker run caprover/cli-caprover:v2.1.1 caprover deploy --caproverUrl https://server.aaditgupta.tech --caproverPassword ${{ secrets.CAPROVER_PASSWORD }} --caproverApp counter --imageName ghcr.io/aaditgupta21/counter
