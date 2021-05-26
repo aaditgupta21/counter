@@ -41,7 +41,15 @@ bot.on("message", (msg) => {
         }
         console.log(val);
         if (discord_number === parseInt(val) + 1) {
-          client.set("number", String(discord_number));
+          msg.channel.messages.fetch({ limit: 1 }).then((message) => {
+            let firstauthor = msg.author.id;
+            if (firstauthor == msg.author.id) {
+              msg.delete();
+              msg.author.send("YOU TYPED A MESSAGE TWICE");
+            } else {
+              client.set("number", String(discord_number));
+            }
+          });
         } else {
           msg.react("‼");
           console.log("bad number");
