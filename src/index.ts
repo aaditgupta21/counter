@@ -10,7 +10,15 @@ client.on("connect", function () {
   console.log("Redis client connected");
 });
 
-client.set("number", STARTING_NUMBER);
+client.get("number", function (err, val) {
+  if (err) {
+    console.log(err);
+    throw err;
+  }
+  if (val < STARTING_NUMBER) {
+    client.set("number", STARTING_NUMBER);
+  }
+});
 
 bot
   .login(TOKEN)
