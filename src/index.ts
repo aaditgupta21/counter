@@ -41,9 +41,9 @@ bot.on("message", (msg) => {
         }
         console.log(val);
         if (discord_number === parseInt(val) + 1) {
-          msg.channel.messages.fetch({ limit: 2 }).then((messages) => {
+          msg.channel.messages.fetch({ limit: 1 }).then((messages) => {
             let firstauthor = messages.first().author.id;
-            if (firstauthor == msg.author.id) {
+            if (firstauthor === msg.author.id) {
               msg.delete();
               msg.author.send("YOU TYPED A MESSAGE TWICE");
             } else {
