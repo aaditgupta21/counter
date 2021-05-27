@@ -16,5 +16,4 @@ export const info = (message: string): void => {
 
 export const fail = (message: string): void => {
   log(chalk.red("[-] " + message));
-  process.exit(1);
 };

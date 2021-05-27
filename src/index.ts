@@ -56,7 +56,7 @@ bot.on("message", (msg) => {
           client.set("number", String(discord_number));
         } else {
           msg.react("‼");
-          console.log("bad number");
+          fail("bad number");
           msg.author.send("YOU TYPED A WRONG NUMBER!! GO DELETE IT");
         }
       });
