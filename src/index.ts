@@ -37,6 +37,7 @@ bot.on("message", (msg) => {
     const number = parseInt(command[1]);
     if (isNaN(number)) {
       fail("pp");
+      channel.send(`tf is that`);
     } else {
       client.set("number", String(command[1]));
       channel.send(`Number Updated!`);
