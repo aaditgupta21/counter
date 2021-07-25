@@ -58,12 +58,12 @@ bot.on("message", (msg) => {
         } else {
           msg.react("‼");
           fail("bad number");
-          msg.author.send("YOU TYPED A WRONG NUMBER!! GO DELETE IT");
+          msg.author.send("YOU TYPED A WRONG NUMBER!! GO DELETE IT").catch(err => console.log(err));;
         }
       });
     } else {
       msg.react("‼");
-      msg.author.send("YOU TYPED A WRONG NUMBER!! GO DELETE IT");
+      msg.author.send("YOU TYPED A WRONG NUMBER!! GO DELETE IT").catch(err => console.log(err));;
     }
   }
 });
